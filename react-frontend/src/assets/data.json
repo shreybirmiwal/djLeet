@@ -5,15 +5,15 @@
         "difficulty": "easy",
         "track1": {
             "title": "Track1: Nokia",
-            "audio": "/audio/polog_track1_placeholder.mp3"
+            "audio": "/audio/nokia.mp3"
         },
         "track2": {
             "title": "Track2: Last Friday Night",
-            "audio": "/audio/house_track2_placeholder.mp3"
+            "audio": "/audio/lfn.mp3"
         },
         "mixed": {
             "title": "Nokia x Last Friday Night",
-            "audio": "/audio/polog_house_mixed_placeholder.mp3"
+            "audio": "/audio/nokia-lfn.mp3"
         }
     },
     {

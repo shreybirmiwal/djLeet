@@ -12,7 +12,8 @@ export default function ChallengeDetail() {
     return (
         <div className="p-8 max-w-xl mx-auto bg-white rounded-lg shadow-lg mt-10 text-black">
             <h2 className="text-2xl font-bold mb-4">{challenge.name}</h2>
-            <div className="space-y-4">
+            <p className="mb-4">You will have to mix these tracks into the provided solution</p>
+            <div className="space-y-8">
                 <div>
                     <p className="font-semibold">{challenge.track1.title}</p>
                     <audio controls src={challenge.track1.audio} className="w-full" />
