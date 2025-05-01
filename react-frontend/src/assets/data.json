@@ -1,52 +1,52 @@
 [
     {
-        "id": "polog-house",
-        "name": "polog x house",
+        "id": "nokia-friday",
+        "name": "nokia x last friday night",
         "difficulty": "easy",
         "track1": {
-            "title": "Polo G - Track Title Example",
+            "title": "Track1: Nokia",
             "audio": "/audio/polog_track1_placeholder.mp3"
         },
         "track2": {
-            "title": "House Beat Example",
+            "title": "Track2: Last Friday Night",
             "audio": "/audio/house_track2_placeholder.mp3"
         },
         "mixed": {
-            "title": "Polo G x House - Mixed Example",
+            "title": "Nokia x Last Friday Night",
             "audio": "/audio/polog_house_mixed_placeholder.mp3"
         }
     },
     {
-        "id": "drake-lebron",
-        "name": "drake x lebron",
+        "id": "coming-soon",
+        "name": "coming soon",
         "difficulty": "medium",
         "track1": {
-            "title": "Drake - Track Title Example",
+            "title": "Track1: Coming Soon",
             "audio": "/audio/drake_track1_placeholder.mp3"
         },
         "track2": {
-            "title": "Lebron Sample Example",
+            "title": "Track2: Coming Soon",
             "audio": "/audio/lebron_track2_placeholder.mp3"
         },
         "mixed": {
-            "title": "Drake x Lebron - Mixed Example",
+            "title": "Coming Soon",
             "audio": "/audio/drake_lebron_mixed_placeholder.mp3"
         }
     },
     {
-        "id": "drake-nav",
-        "name": "drake x nav",
+        "id": "coming-soon-2",
+        "name": "coming soon 2",
         "difficulty": "hard",
         "track1": {
-            "title": "Drake - Another Track Example",
+            "title": "Track1: Coming Soon 2",
             "audio": "/audio/drake_nav_track1_placeholder.mp3"
         },
         "track2": {
-            "title": "NAV - Track Title Example",
+            "title": "Track2: Coming Soon 2",
             "audio": "/audio/nav_track2_placeholder.mp3"
         },
         "mixed": {
-            "title": "Drake x NAV - Mixed Example",
+            "title": "Coming Soon 2",
             "audio": "/audio/drake_nav_mixed_placeholder.mp3"
         }
     }
