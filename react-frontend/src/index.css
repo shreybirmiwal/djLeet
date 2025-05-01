@@ -1,8 +1,11 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: 'Inter', system-ui, sans-serif;
+/* Import OpenSauce */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* Replace with OpenSauce if hosted */
+
+body {
+  @apply font-opensauce bg-gradient-to-r from-purple-500 to-cyan-400;
 }

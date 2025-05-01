@@ -1,0 +1,53 @@
+[
+    {
+        "id": "polog-house",
+        "name": "polog x house",
+        "difficulty": "easy",
+        "track1": {
+            "title": "Polo G - Track Title Example",
+            "audio": "/audio/polog_track1_placeholder.mp3"
+        },
+        "track2": {
+            "title": "House Beat Example",
+            "audio": "/audio/house_track2_placeholder.mp3"
+        },
+        "mixed": {
+            "title": "Polo G x House - Mixed Example",
+            "audio": "/audio/polog_house_mixed_placeholder.mp3"
+        }
+    },
+    {
+        "id": "drake-lebron",
+        "name": "drake x lebron",
+        "difficulty": "medium",
+        "track1": {
+            "title": "Drake - Track Title Example",
+            "audio": "/audio/drake_track1_placeholder.mp3"
+        },
+        "track2": {
+            "title": "Lebron Sample Example",
+            "audio": "/audio/lebron_track2_placeholder.mp3"
+        },
+        "mixed": {
+            "title": "Drake x Lebron - Mixed Example",
+            "audio": "/audio/drake_lebron_mixed_placeholder.mp3"
+        }
+    },
+    {
+        "id": "drake-nav",
+        "name": "drake x nav",
+        "difficulty": "hard",
+        "track1": {
+            "title": "Drake - Another Track Example",
+            "audio": "/audio/drake_nav_track1_placeholder.mp3"
+        },
+        "track2": {
+            "title": "NAV - Track Title Example",
+            "audio": "/audio/nav_track2_placeholder.mp3"
+        },
+        "mixed": {
+            "title": "Drake x NAV - Mixed Example",
+            "audio": "/audio/drake_nav_mixed_placeholder.mp3"
+        }
+    }
+]
