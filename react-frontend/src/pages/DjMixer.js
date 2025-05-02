@@ -9,8 +9,7 @@ export default function DjMixer() {
     const challenge = data.find((c) => c.name === name);
     const navigate = useNavigate();
 
-    const track1Ref = useRef(null);
-    const track2Ref = useRef(null);
+
     const waveform1Ref = useRef(null);
     const waveform2Ref = useRef(null);
 
@@ -24,10 +23,9 @@ export default function DjMixer() {
     const [isPlaying2, setIsPlaying2] = useState(false);
 
 
+
     useEffect(() => {
         if (!challenge) return;
-
-        let isMounted = true;
 
         const ws1 = WaveSurfer.create({
             container: waveform1Ref.current,
@@ -36,6 +34,7 @@ export default function DjMixer() {
             height: 80,
             responsive: true,
             barWidth: 2,
+            interact: true, // Enable interactions
         });
 
         const ws2 = WaveSurfer.create({
@@ -45,40 +44,43 @@ export default function DjMixer() {
             height: 80,
             responsive: true,
             barWidth: 2,
+            interact: true,
         });
 
-        if (isMounted) {
-            ws1.load(challenge.track1.audio);
-            ws2.load(challenge.track2.audio);
-            setWave1(ws1);
-            setWave2(ws2);
-        }
+        // Load tracks and set up events
+        const loadTracks = async () => {
+            await Promise.all([
+                ws1.load(challenge.track1.audio),
+                ws2.load(challenge.track2.audio)
+            ]);
+
+            // Add click handlers for seeking
+            ws1.on('click', () => ws1.seekTo(ws1.getCurrentTime() / ws1.getDuration()));
+            ws2.on('click', () => ws2.seekTo(ws2.getCurrentTime() / ws2.getDuration()));
+        };
+
+        loadTracks();
+        setWave1(ws1);
+        setWave2(ws2);
 
         return () => {
-            isMounted = false;
             ws1.destroy();
             ws2.destroy();
         };
     }, [challenge]);
 
 
-    const handlePlayPause = (ref, wave, setPlaying) => {
-        if (!ref.current) return;
-        if (ref.current.paused) {
-            ref.current.play();
-            wave?.play();
-            setPlaying(true);
-        } else {
-            ref.current.pause();
-            wave?.pause();
-            setPlaying(false);
-        }
+    const handlePlayPause = (wave, setPlaying) => {
+        if (!wave) return;
+
+        wave.playPause();
+        setPlaying(wave.isPlaying());
     };
 
-
-    const handleVolumeChange = (ref, setVolume) => (e) => {
+    // Update volume handler
+    const handleVolumeChange = (wave, setVolume) => (e) => {
         const vol = parseFloat(e.target.value);
-        if (ref.current) ref.current.volume = vol;
+        if (wave) wave.setVolume(vol);
         setVolume(vol);
     };
 
@@ -89,10 +91,9 @@ export default function DjMixer() {
         const leftVol = Math.cos(value * 0.5 * Math.PI);
         const rightVol = Math.cos((1 - value) * 0.5 * Math.PI);
 
-        if (track1Ref.current) track1Ref.current.volume = leftVol * volume1;
-        if (track2Ref.current) track2Ref.current.volume = rightVol * volume2;
+        if (wave1) wave1.setVolume(leftVol * volume1);
+        if (wave2) wave2.setVolume(rightVol * volume2);
     };
-
     if (!challenge) return <div className="text-white p-10">Challenge not found.</div>;
 
     return (
@@ -117,10 +118,9 @@ export default function DjMixer() {
                             <VinylRecord centerColor="purple" isSpinning={isPlaying1} />
                         </div>
                         <div ref={waveform1Ref} className="mb-4"></div>
-                        <audio ref={track1Ref} src={challenge.track1.audio} />
                         <div className="space-y-2">
                             <button
-                                onClick={() => handlePlayPause(track1Ref, wave1, setIsPlaying1)}
+                                onClick={() => handlePlayPause(wave1, setIsPlaying1)}
                                 className="bg-purple-600 text-white w-full py-2 rounded"
                             >
                                 Play / Pause
@@ -131,7 +131,7 @@ export default function DjMixer() {
                                 max="1"
                                 step="0.01"
                                 value={volume1}
-                                onChange={handleVolumeChange(track1Ref, setVolume1)}
+                                onChange={handleVolumeChange(setVolume1)}
                                 className="w-full"
                             />
                         </div>
@@ -145,10 +145,9 @@ export default function DjMixer() {
                             <VinylRecord centerColor="cyan" isSpinning={isPlaying2} />
                         </div>
                         <div ref={waveform2Ref} className="mb-4"></div>
-                        <audio ref={track2Ref} src={challenge.track2.audio} />
                         <div className="space-y-2">
                             <button
-                                onClick={() => handlePlayPause(track2Ref, wave2, setIsPlaying2)}
+                                onClick={() => handlePlayPause(wave2, setIsPlaying2)}
                                 className="bg-cyan-600 text-white w-full py-2 rounded"
                             >
                                 Play / Pause
@@ -159,7 +158,7 @@ export default function DjMixer() {
                                 max="1"
                                 step="0.01"
                                 value={volume2}
-                                onChange={handleVolumeChange(track2Ref, setVolume2)}
+                                onChange={handleVolumeChange(setVolume2)}
                                 className="w-full"
                             />
                         </div>
