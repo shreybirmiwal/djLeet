@@ -29,7 +29,7 @@ export default function ChallengeDetail() {
             </div>
             <button
                 className="mt-6 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
-                onClick={() => navigate("/")}
+                onClick={() => navigate(`/mixer/${challenge.name}`)}
             >
                 Let's Mix!
             </button>
